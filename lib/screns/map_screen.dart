@@ -30,7 +30,7 @@ class MainMap extends StatelessWidget {
           child: FlutterMap(
             options: MapOptions(
               center: LatLng(8.477217, 124.645920),
-              zoom: 16.0,
+              zoom: 15.0,
             ),
             children: [
               TileLayer(

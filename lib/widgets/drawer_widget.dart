@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:web_server_location_tracker/screns/map_screen.dart';
 import 'package:web_server_location_tracker/widgets/text_widget.dart';
 
-
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
 
@@ -17,53 +16,53 @@ class DrawerWidget extends StatelessWidget {
               decoration: const BoxDecoration(
                 color: Colors.grey,
               ),
-              accountEmail: Column(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Icon(
-                        Icons.call_end,
-                        color: Colors.black,
-                        size: 15,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      TextRegular(
-                        text: '09669420116',
-                        fontSize: 14,
-                        color: Colors.black,
-                      ),
-                    ],
+              accountEmail: const Column(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  // children: [
+                  //   // const SizedBox(
+                  //   //   height: 10,
+                  //   // ),
+                  //   Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       const Icon(
+                  //         Icons.call_end,
+                  //         color: Colors.black,
+                  //         size: 15,
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 10,
+                  //       ),
+                  //       TextRegular(
+                  //         text: '09669420116',
+                  //         fontSize: 14,
+                  //         color: Colors.black,
+                  //       ),
+                  //     ],
+                  //   ),
+                  //   const SizedBox(
+                  //     height: 5,
+                  //   ),
+                  //   Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       const Icon(
+                  //         Icons.mail,
+                  //         color: Colors.black,
+                  //         size: 15,
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 10,
+                  //       ),
+                  //       TextRegular(
+                  //         text: 'neilpagara50@gmail.com',
+                  //         fontSize: 14,
+                  //         color: Colors.black,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Icon(
-                        Icons.mail,
-                        color: Colors.black,
-                        size: 15,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      TextRegular(
-                        text: 'neilpagara50@gmail.com',
-                        fontSize: 14,
-                        color: Colors.black,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
               accountName: Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: TextBold(
@@ -83,9 +82,9 @@ class DrawerWidget extends StatelessWidget {
               height: 5,
             ),
             ListTile(
-              leading: const Icon(Icons.home),
+              leading: const Icon(Icons.map),
               title: TextRegular(
-                text: 'Home',
+                text: 'Main Map',
                 fontSize: 12,
                 color: Colors.grey,
               ),
@@ -96,16 +95,30 @@ class DrawerWidget extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(
-                Icons.info_outline_rounded,
+                Icons.history,
               ),
               title: TextRegular(
-                text: 'About GPSpeed',
+                text: 'Recent Trips',
                 fontSize: 12,
                 color: Colors.grey,
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MainMap()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const MainMap()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.keyboard_command_key,
+              ),
+              title: TextRegular(
+                text: 'Commands',
+                fontSize: 12,
+                color: Colors.grey,
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const MainMap()));
               },
             ),
             // ListTile(
@@ -136,55 +149,55 @@ class DrawerWidget extends StatelessWidget {
             //         MaterialPageRoute(builder: (context) => const MainMap()));
             //   },
             // ),
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: TextRegular(
-                text: 'Exit',
-                fontSize: 12,
-                color: Colors.grey,
-              ),
-              onTap: () {
-                showDialog(
-                    barrierDismissible: false,
-                    context: context,
-                    builder: (context) => AlertDialog(
-                          title: const Text(
-                            'Logout Confirmation',
-                            style: TextStyle(
-                                fontFamily: 'QBold',
-                                fontWeight: FontWeight.bold),
-                          ),
-                          content: const Text(
-                            'Are you sure you want to Logout?',
-                            style: TextStyle(fontFamily: 'QRegular'),
-                          ),
-                          actions: <Widget>[
-                            MaterialButton(
-                              onPressed: () => Navigator.of(context).pop(true),
-                              child: const Text(
-                                'Close',
-                                style: TextStyle(
-                                    fontFamily: 'QRegular',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            MaterialButton(
-                              onPressed: () {
-                                Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                        builder: (context) => const MainMap()));
-                              },
-                              child: const Text(
-                                'Continue',
-                                style: TextStyle(
-                                    fontFamily: 'QRegular',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ],
-                        ));
-              },
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.logout),
+            //   title: TextRegular(
+            //     text: 'Exit',
+            //     fontSize: 12,
+            //     color: Colors.grey,
+            //   ),
+            //   onTap: () {
+            //     showDialog(
+            //         barrierDismissible: false,
+            //         context: context,
+            //         builder: (context) => AlertDialog(
+            //               title: const Text(
+            //                 'Logout Confirmation',
+            //                 style: TextStyle(
+            //                     fontFamily: 'QBold',
+            //                     fontWeight: FontWeight.bold),
+            //               ),
+            //               content: const Text(
+            //                 'Are you sure you want to Logout?',
+            //                 style: TextStyle(fontFamily: 'QRegular'),
+            //               ),
+            //               actions: <Widget>[
+            //                 MaterialButton(
+            //                   onPressed: () => Navigator.of(context).pop(true),
+            //                   child: const Text(
+            //                     'Close',
+            //                     style: TextStyle(
+            //                         fontFamily: 'QRegular',
+            //                         fontWeight: FontWeight.bold),
+            //                   ),
+            //                 ),
+            //                 MaterialButton(
+            //                   onPressed: () {
+            //                     Navigator.of(context).pushReplacement(
+            //                         MaterialPageRoute(
+            //                             builder: (context) => const MainMap()));
+            //                   },
+            //                   child: const Text(
+            //                     'Continue',
+            //                     style: TextStyle(
+            //                         fontFamily: 'QRegular',
+            //                         fontWeight: FontWeight.bold),
+            //                   ),
+            //                 ),
+            //               ],
+            //             ));
+            //   },
+            // ),
           ],
         ),
       ),
