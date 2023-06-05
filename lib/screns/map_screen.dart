@@ -10,6 +10,28 @@ class MainMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            backgroundColor: Colors.lightBlueAccent,
+            onPressed: () {},
+            child: const Icon(Icons.send_to_mobile),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          FloatingActionButton(
+            backgroundColor: Colors.lightBlueAccent,
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const MainMap()));
+            },
+            child: const Icon(Icons.refresh),
+          ),
+        ],
+      ),
       drawer: const Drawer(
         child: DrawerWidget(),
       ),
