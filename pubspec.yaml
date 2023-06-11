@@ -38,6 +38,8 @@ dependencies:
   flutter_map:
   google_maps_flutter:
   easy_sidemenu: ^0.4.1
+  url_launcher:
+  webview_flutter: ^4.2.2
 
 dev_dependencies:
   flutter_test:
