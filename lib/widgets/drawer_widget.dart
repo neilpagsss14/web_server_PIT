@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:web_server_location_tracker/screns/map_screen.dart';
 
 import 'package:web_server_location_tracker/widgets/text_widget.dart';
@@ -104,8 +105,8 @@ class DrawerWidget extends StatelessWidget {
                 color: Colors.grey,
               ),
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const MainMap()));
+                launch(
+                    'https://timeline.google.com/maps/timeline?hl=en&authuser=0&pli=1&rapt=AEjHL4MExTjTgIZEVAoRGRQ4MiLrTzXh7XgpzPh-bstdIgdKdjIPIcwYp0ou_0lNUVlAIW5amffvhaLdtPYOdkdnedopeiMTGw');
               },
             ),
             ListTile(

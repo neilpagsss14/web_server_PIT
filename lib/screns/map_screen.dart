@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_server_location_tracker/widgets/text_widget.dart';
 
 import '../widgets/drawer_widget.dart';
 
 class MainMap extends StatelessWidget {
   const MainMap({super.key});
+  final String esp32Url = 'http://192.168.71.211';
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +17,16 @@ class MainMap extends StatelessWidget {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          FloatingActionButton(
+            backgroundColor: Colors.lightBlueAccent,
+            onPressed: () {
+              sendRequestToESP32();
+            },
+            child: const Icon(Icons.connect_without_contact),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
           FloatingActionButton(
             backgroundColor: Colors.lightBlueAccent,
             onPressed: () {},
@@ -37,14 +49,8 @@ class MainMap extends StatelessWidget {
         child: DrawerWidget(),
       ),
       appBar: AppBar(
-        title: const Text(
-          'LOCATION TRACKER WEB SERVER',
-          style: TextStyle(
-              fontSize: 25,
-              letterSpacing: 5,
-              fontWeight: FontWeight.w900,
-              color: Colors.black),
-        ),
+        title: TextBold(
+            text: 'GPSpeed Web Server', fontSize: 25, color: Colors.black),
         centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
@@ -66,16 +72,15 @@ class MainMap extends StatelessWidget {
   }
 
   Future<void> sendRequestToESP32() async {
-    const url =
-        'http://esp32-ip-address'; // Replace with the IP address of your ESP32
-    final response = await http.get(Uri.parse(url));
-
-    if (response.statusCode == 200) {
-      // Request successful, handle the response
-      print(response.body);
-    } else {
-      // Request failed, handle the error
-      print('Request failed with status: ${response.statusCode}');
+    try {
+      final response = await http.get(Uri.parse(esp32Url));
+      if (response.statusCode == 200) {
+        print('Response from ESP32: ${response.body}');
+      } else {
+        print('Request failed with status: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error sending request to ESP32: $e');
     }
   }
 }
